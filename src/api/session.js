@@ -19,11 +19,32 @@ const signIn = (user, platform = 'web') => {
   );
 };
 
-const signOut = () => {
+const signOut = token =>
+  axios.delete(
+    `${host}user/sessions`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'authorization': token,
+      },
+    },
+  );
 
-};
+const check = token =>
+  axios.get(
+    `${host}user`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'authorization': token,
+      },
+    },
+  );
 
 export default {
   signIn,
   signOut,
+  check,
 };

@@ -1,7 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class App extends React.Component {
+import appAction from '../actions/appActions';
+
+class App extends React.Component {
+  componentDidMount() {
+    this.props.checkLoginInfo();
+  }
+
   render() {
+    console.log('RENDER OF APP');
     return (
       <div>
         {this.props.children}
@@ -9,3 +17,10 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  checkLoginInfo: () =>
+    dispatch(appAction.checkLoginInfo()),
+});
+
+export default connect(null, mapDispatchToProps)(App);

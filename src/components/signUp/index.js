@@ -4,8 +4,8 @@ import SignUp from './signUp';
 import appAction from '../../actions/appActions';
 
 const mapDispatchToProps = dispatch => ({
-  signIn: user =>
-    dispatch(appAction.signIn(user)),
+  signUp: user =>
+    dispatch(appAction.signUp(user)),
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);

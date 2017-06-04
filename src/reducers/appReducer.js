@@ -19,6 +19,11 @@ export default function (state = initialState, action) {
         .set('isUserLoggedIn', true)
         .set('token', action.token)
         .set('currenUser', action.currentUser);
+    case constant.SER_USER_LOGGED_OUT:
+      return state
+        .set('isUserLoggedIn', initialState.get('isUserLoggedIn'))
+        .set('token', initialState.get('token'))
+        .set('currenUser', initialState.get('currenUser'));
     default:
       return state;
   }

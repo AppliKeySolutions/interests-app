@@ -11,6 +11,10 @@ import store from './store';
 import App from './components/app';
 import SignIn from './components/signIn';
 import SignUp from './components/signUp';
+import MainPage from './components/mainPage';
+import Communities from './components/communities';
+import Community from './components/communities/community';
+import CreateCommunity from './components/communities/createCommunity';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -18,6 +22,12 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/main" component={MainPage}>
+          <IndexRoute component={Communities} />
+          <Route path="mycommunities" component={Communities} />
+          <Route path="community" component={Community} />
+          <Route path="create" component={CreateCommunity} />
+        </Route>
       </Route>
     </Router>
   </Provider>,
