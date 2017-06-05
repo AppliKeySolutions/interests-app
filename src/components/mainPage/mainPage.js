@@ -3,13 +3,19 @@ import { Navbar, Nav, NavItem, Grid, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 export default class MainPage extends React.Component {
+  componentDidMount() {
+    if (this.props.token && this.props.token.length > 0) {
+      this.props.getAllCommunities(this.props.token);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log(nextProps.token);
     if (nextProps.token !== this.props.token) {
       this.props.getAllCommunities(nextProps.token);
     }
   }
-  
+ 
   render() {
     console.log('RENDER OF MAIN PAGE');
     return (
